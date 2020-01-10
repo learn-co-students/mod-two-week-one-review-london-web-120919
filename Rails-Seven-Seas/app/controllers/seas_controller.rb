@@ -2,6 +2,90 @@ class SeasController < ApplicationController
   #define your controller actions here
 
 
+  def welcome 
+  end 
+
+  def index
+    @seas = Sea.all
+  end  
+
+  def new 
+    @sea = Sea.new
+  end 
+
+  def show 
+   @sea = Sea.find(params[:id])
+  end 
+
+  def create
+    @sea = Sea.create(sea_params)
+    redirect_to sea_path(@sea)
+  end
+
+  def edit
+    @sea = Sea.find(params[:id])
+  end 
+
+  def update
+    @sea = Sea.find(params[:id])
+    @sea.update(sea_params)
+    redirect_to sea_path(@sea)
+  end
+
+  def delete 
+    @sea = Sea.find(params[:id])
+    @sea.delete
+    redirect_to seas_path
+  end 
+
+  #   get "/" do
+  
+  #     erb :welcome
+  #   end
+  
+  #   get "/seas" do
+  #     @seas = Sea.all
+  #     erb :'index.html'
+  #   end
+  
+  #   get "/seas/new" do
+  #     erb :'new.html'
+  #   end
+  
+  #   get "/seas/:id" do
+  #     @sea = Sea.find(params[:id])
+  #     erb :'show.html'
+  #   end
+  
+  #   post "/seas" do
+  #     @sea = Sea.new(params)
+  #     @sea.save
+  #     redirect to "/seas/#{@sea.id}"
+  #   end
+  
+  #   get "/seas/:id/edit" do
+  #     @sea = Sea.find(params[:id])
+  
+  #     erb :'edit.html'
+  #   end
+  
+  #   patch "/seas/:id" do
+  #     @sea = Sea.find(params[:id])
+  #     params.delete("_method")
+  #     params[:has_mermaids] ||= false
+  #     @sea.update(params)
+  #     redirect to "/seas/#{@sea.id}"
+  #   end
+  
+  #   delete "/seas/:id" do
+  #     @sea = Sea.find(params[:id])
+  #     @sea.destroy
+  #     redirect to "/seas"
+  #   end
+  
+  # end
+
+
   private
   # In controller actions, use this private method to access sea params from forms.
   # Example: @sea.update(sea_params)

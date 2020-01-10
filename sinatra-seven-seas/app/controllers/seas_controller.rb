@@ -42,7 +42,7 @@ class SeasController < ApplicationController
   delete "/seas/:id" do
     @sea = Sea.find(params[:id])
     @sea.destroy
-    redirect to "/seas"
+    redirect "/seas"
   end
 
 end
